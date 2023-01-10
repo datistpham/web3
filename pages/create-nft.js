@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
-
+  const [open, setOpen]= useState(false)
   const router = useRouter();
 
   const listNFTForSale = async () => {
@@ -36,6 +36,30 @@ export default function CreateItem() {
             updateFormInput({ ...formInput, price: e.target.value })
           }
         />
+        <br />
+        <div></div>
+        <button onClick={()=> setOpen(true)} style={{background: "#ec4899", color: "#fff", padding: 10}}>
+          Đấu giá
+        </button>
+        {
+          open=== true && 
+          <>
+          <div></div>
+        <br />
+        <input
+          placeholder="Asset Price in Eth"
+          className="mt-2 border rounded p-4"
+          value={"Thời gian kết thúc"}
+        />
+        <div></div>
+        <br />
+        <input
+          placeholder="Asset Price in Eth"
+          className="mt-2 border rounded p-4"
+          value={"Giá khởi điểm"}
+        />
+          </>
+        }
         <input
           type="file"
           name="Asset"
